@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+if [[ $# -lt 3 ]]; then
+	echo "Usage: makeSampleSet SRC_DIR DEST_DIR SAMPLE_SIZE"
+	echo "makeSampleSet will sample data from [SRC_DIR] and copy it to [DEST_DIR]"
+	exit 0
+fi
+
+SRC_DIR=$1
+DEST_DIR=$2
+SAMPLE_SIZE=$3
+
+for file in $(ls $SRC_DIR | head -n $SAMPLE_SIZE)
+do
+	cp $SRC_DIR"/"$file $DEST_DIR
+	echo $file moved from "$SRC_DIR" to "$DEST_DIR"
+done
